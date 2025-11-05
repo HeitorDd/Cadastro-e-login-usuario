@@ -1,0 +1,4 @@
+flask
+supabase
+bcrypt
+python-dotenv

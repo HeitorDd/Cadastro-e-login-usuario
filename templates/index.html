@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sistema de Login/Cadastro</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="messages">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <div class="forms-wrapper">
+            
+            <div class="form-box">
+                <h2>1. Cadastrar novo usuário</h2>
+                <form action="/registrar" method="POST">
+                    <label for="reg-email">Email:</label>
+                    <input type="email" id="reg-email" name="email" required>
+                    
+                    <label for="reg-senha">Senha:</label>
+                    <input type="password" id="reg-senha" name="senha" required>
+                    
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+
+            <div class="form-box">
+                <h2>2. Entrar (Fazer Login)</h2>
+                <form action="/login" method="POST">
+                    <label for="log-email">Email:</label>
+                    <input type="email" id="log-email" name="email" required>
+                    
+                    <label for="log-senha">Senha:</label>
+                    <input type="password" id="log-senha" name="senha" required>
+                    
+                    <button type="submit">Entrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
